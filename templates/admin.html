@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Dashboard | Catering Service</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Catering Service Admin</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="admin.html">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="logout.html">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid mt-4">
+    <div class="row">
+      <!-- Sidebar -->
+      <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse" id="sidebarMenu">
+        <div class="position-sticky pt-3">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" href="#menu-management" data-bs-toggle="tab">Menu Management</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#orders-overview" data-bs-toggle="tab">Orders Overview</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="tab-content">
+
+          <!-- Menu Management Tab -->
+          <div class="tab-pane fade show active" id="menu-management" role="tabpanel">
+            <h2>Menu Management</h2>
+            <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addMenuItemModal">Add New Menu Item</button>
+
+            <!-- Menu Items Table -->
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Price</th>
+                  <th>Image URL</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Sample menu item -->
+                <tr>
+                  <td>Grilled Chicken</td>
+                  <td>Tender grilled chicken with herbs and spices</td>
+                  <td>$12.99</td>
+                  <td>https://via.placeholder.com/100x60</td>
+                  <td>
+                    <button class="btn btn-sm btn-primary me-2">Edit</button>
+                    <button class="btn btn-sm btn-danger">Delete</button>
+                  </td>
+                </tr>
+                <!-- Add more rows dynamically in real app -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Orders Overview Tab -->
+          <div class="tab-pane fade" id="orders-overview" role="tabpanel">
+            <h2>Orders Overview</h2>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer Name</th>
+                  <th>Items Ordered</th>
+                  <th>Total Price</th>
+                  <th>Order Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Sample order -->
+                <tr>
+                  <td>001</td>
+                  <td>John Doe</td>
+                  <td>Grilled Chicken (2), Pasta Alfredo (1)</td>
+                  <td>$36.47</td>
+                  <td>2025-10-18 12:45 PM</td>
+                </tr>
+                <!-- More orders here -->
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Add Menu Item Modal -->
+  <div class="modal fade" id="addMenuItemModal" tabindex="-1" aria-labelledby="addMenuItemModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form id="addMenuItemForm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addMenuItemModalLabel">Add New Menu Item</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <div class="mb-3">
+              <label for="itemName" class="form-label">Name</label>
+              <input type="text" id="itemName" name="name" class="form-control" required />
+            </div>
+            <div class="mb-3">
+              <label for="itemDescription" class="form-label">Description</label>
+              <textarea id="itemDescription" name="description" class="form-control" rows="3" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="itemPrice" class="form-label">Price</label>
+              <input type="number" id="itemPrice" name="price" step="0.01" min="0" class="form-control" required />
+            </div>
+            <div class="mb-3">
+              <label for="itemImage" class="form-label">Image URL (optional)</label>
+              <input type="url" id="itemImage" name="image" class="form-control" />
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Add Item</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // This is a placeholder for handling the form submission to add a menu item.
+    document.getElementById('addMenuItemForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Menu item added (this is just a demo, implement backend logic to save)');
+      // Close modal
+      const modal = bootstrap.Modal.getInstance(document.getElementById('addMenuItemModal'));
+      modal.hide();
+      // Clear form (optional)
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
